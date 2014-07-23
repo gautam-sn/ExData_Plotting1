@@ -11,10 +11,7 @@ par(mfrow=c(2,2))
 #Part1
 plot(strptime(paste(dt$Date,dt$Time),"%Y-%m-%d %H:%M:%S"),dt$Global_active_power, type="n", ylab="Global Active Power",xlab="")
 lines(strptime(paste(dt$Date,dt$Time),"%Y-%m-%d %H:%M:%S"),dt$Global_active_power)
-library("data.table")
-dt <- fread("household_power_consumption.txt",na.strings="?")
-dt$Date <- as.Date(dt$Date ,"%d/%m/%Y")
-dt <- dt[dt$Date <= "2007-02-02" & dt$Date >= "2007-02-01"]
+
 #Part2
 dt$Voltage <- as.numeric(dt$Voltage)
 plot(strptime(paste(dt$Date,dt$Time),"%Y-%m-%d %H:%M:%S"),dt$Voltage, type="n", ylab="Voltage",xlab="datetime")
